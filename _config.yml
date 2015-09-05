@@ -5,7 +5,7 @@ description: > # this means to ignore newlines until "baseurl:"
   A technical blog, for linux php mysql apahce nginx and another open source project.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://www.cn3ya.com" # the base hostname & protocol for your site
-github_username:  liang179
+github_username:  cn3ya
 
 # Build settings
 markdown: kramdown
