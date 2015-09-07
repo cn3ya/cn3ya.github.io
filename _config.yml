@@ -2,7 +2,7 @@
 title: Cn3ya
 email: cn3ya@cn3ya.com
 description: > # this means to ignore newlines until "baseurl:"
-  A technical blog, for linux php mysql apahce nginx and another open source project.
+  个人技术博客，关于linux，php，javascript，mysql，apahce，nginx和一些开源软件的技术分享，商业合作和咨询请联系左侧邮箱。
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://www.cn3ya.com" # the base hostname & protocol for your site
 github_username:  cn3ya

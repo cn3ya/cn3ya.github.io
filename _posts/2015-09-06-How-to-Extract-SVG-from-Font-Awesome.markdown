@@ -1,19 +1,21 @@
 ---
 layout: post
-title:  "How to Extract SVG from Font-Awesome"
+title:  "如何提取Font-Awesome字体库中的SVG数据"
 date:   2015-09-06 13:21:30
 categories: HTML CSS front-end browser
 ---
 
-###Application Scenes
+###应用场景
 In many front-end prject, there are using third part font like Font-Awesome. And in most case, just very little part of third part resource has been used. So it's the application scenes for extracting SVG data from Font-Awesome and embedding it to our HTML or CSS file.
 
-###Steps
+###步骤
 
-####1、Locate the data in svg file
-open Font-Awesome CSS file & SVG file. As a example we search string `stack-overflow` in CSS file and get below, then we find that its content if point to `\f16c`. Next we open SVG file search `16c` and get below, and a `<glyph>` tag contain the data we need.
+####1、定位SVG数据在字体库中的位置
+分别下载Font-Awesome的CSS文件和SVG文件。接下来，我们以提取`stack-overflow`这个icon为例。
+首先打开CSS文件，在编辑器中搜索`stack-overflow`，定位到下面的位置。可以看到指向SVG文件的`16c`数据。
+接下来打开SVG文件，搜索`16C`找到下面的`<glyph>`标签，里面包含有我们需要的数据。
 
-####2、Embedding the data to our HTML file
+####2、将数据内嵌到HTML文件
 
 {% highlight html %}
 <svg height="16" width="16">
