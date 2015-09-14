@@ -10,3 +10,7 @@ stackoverflow_username: cn3ya
 stackoverflow_id: 5305101
 # Build settings
 markdown: kramdown
+
+#Serve Command Options
+host: 0.0.0.0
+port: 8000
