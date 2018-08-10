@@ -19,4 +19,9 @@
 
     gtag('config', 'UA-123652150-1');
   </script>
+
+  <!-- tags -->
+  {% if site.tags != "" %}
+    {% include tag_collection.html %}
+  {% endif %}
 </head>

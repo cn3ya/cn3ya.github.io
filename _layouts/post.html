@@ -1,22 +1,27 @@
 ---
 layout: default
-comments: true
 ---
 <div class="post">
 
   <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
+    <span>
+      {% for tag in page.tags %}
+        {% capture tag_name %}{{ tag }}{% endcapture %}
+        <a href="/tag/{{ tag_name }}"><code class="highligher-rouge"><nobr>{{ tag_name }}</nobr></code></a><span> </span>
+      {% endfor %}
+    </span>
     <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
+    <!-- addthis share-->
+    <div class="addthis_inline_share_toolbox"></div>
   </header>
-
-  <!-- addthis share-->
-  <div class="addthis_inline_share_toolbox"></div>
 
   <article class="post-content">
     {{ content }}
   </article>
 
   {% if page.comments != false %}
+    <h1>评论</h1>
     <div id="disqus_thread"></div>
     <script>
       /**
