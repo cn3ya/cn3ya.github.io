@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "PHP轻量架构设计1:库管理"
+title:  "敏捷开发"
 date:   2016-10-11 13:21:30
 categories: Ruby
 ---
