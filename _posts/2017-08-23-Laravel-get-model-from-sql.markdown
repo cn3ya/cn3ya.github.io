@@ -3,7 +3,7 @@ layout: post
 title:  "Laravel使用复杂sql获取模型实例"
 date:   2017-08-23 13:21:30
 categories: Laravel
-tags: php laravel ORM
+tags: PHP Laravel ORM
 ---
 
 ### 背景
@@ -37,5 +37,5 @@ Laravel框架实现的ORM能有效的提高开发效率,当业务场景越来越
         group by a.name,a.group_id,a.title,a.is_share,a.is_hook
         order by a.name
 SQL;
-        return ComponentVersionModel::fromQuery($sql);
+    return ComponentVersionModel::fromQuery($sql);
 {% endhighlight %}

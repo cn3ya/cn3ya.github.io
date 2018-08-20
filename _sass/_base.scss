@@ -170,6 +170,22 @@ pre {
     }
 }
 
+.page-content .wrapper {
+    background-color: #ffffff;
+    padding: $spacing-unit $spacing-unit/2;
+}
+
+code {
+    font-family: 'Source Code Pro', monospace;
+}
+
+.post-tag {
+    font-family: 'Source Code Pro', monospace;
+}
+
+.post-tag i {
+    font-size:12px;margin-right:3px;
+}
 
 
 /**

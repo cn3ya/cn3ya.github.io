@@ -8,7 +8,7 @@ layout: default
     <span>
       {% for tag in page.tags %}
         {% capture tag_name %}{{ tag }}{% endcapture %}
-        <a href="/tag/{{ tag_name }}"><code class="highligher-rouge"><nobr>{{ tag_name }}</nobr></code></a><span> </span>
+        <a href="/tag/{{ tag_name }}"><code class="post-tag"><i class="fas fa-tag"></i><nobr>{{ tag_name }}</nobr></code></a><span> </span>
       {% endfor %}
     </span>
     <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
