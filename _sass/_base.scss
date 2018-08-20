@@ -79,8 +79,12 @@ li {
 /**
  * Headings
  */
-h1, h2, h3, h4, h5, h6 {
+h1 {
     font-weight: 300;
+}
+
+h2, h3, h4, h5, h6 {
+    font-weight: 500;
 }
 
 
@@ -127,6 +131,7 @@ blockquote {
  */
 pre,
 code {
+    font-family: 'Source Code Pro', monospace;
     font-size: 15px;
     border: 1px solid $grey-color-light;
     border-radius: 3px;
@@ -173,10 +178,6 @@ pre {
 .page-content .wrapper {
     background-color: #ffffff;
     padding: $spacing-unit/2 $spacing-unit/2;
-}
-
-code {
-    font-family: 'Source Code Pro', monospace;
 }
 
 .post-tag {
