@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "LNMP运维"
-date:   2016-10-11 13:21:30
-categories: Ruby
+title:  "理解Webpack打包原理"
+date:   2015-10-17 13:21:30
+categories: Webpack
 ---
 
 ### 背景
