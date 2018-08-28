@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  "SSH端口映射"
+title:  "使用CouldFlare的DNS服务实现访问提速"
 date:   2015-09-22 09:41:22
-categories: mysql publish
+categories: CouldFlare CDN DNS
 ---
 
 ### 背景
-在新迭代发布时,常常伴随数据库结构的变更
+CouldFlare为个人用户提供了免费的CDN加速服务,只需要将对应的DNS服务器地址配置成CouldFlare提供的地址便能轻松实现网站访问加速
 
 ### 需求
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "前端常用扩展"
+title:  "Python虚拟环境"
 date:   2016-10-11 13:21:30
 categories: Ruby
 ---

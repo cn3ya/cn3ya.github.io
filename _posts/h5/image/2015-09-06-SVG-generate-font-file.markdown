@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "如何提取Font-Awesome字体库中的SVG数据"
+title:  "为SVG文件生成字体文件"
 date:   2015-09-06 13:21:30
 categories: HTML CSS front-end browser
 ---
