@@ -1,0 +1,19 @@
+---
+layout: post
+title:  "使用Grafana,InfluxDB和Telegraf打造监控平台"
+date:   2015-09-22 09:41:22
+categories: CouldFlare CDN DNS
+---
+
+### 背景
+在生产环境中,通过人力无法实现7x24的对服务器的监控
+
+### 安装
+
+### 需求
+
+####1、监控服务器性能指标
+
+####2、监控服务健康状态
+
+####3、异常提醒
