@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "C语言"
+title:  "IO复用"
 date:   2016-10-11 13:21:30
 categories: Ruby
 ---
