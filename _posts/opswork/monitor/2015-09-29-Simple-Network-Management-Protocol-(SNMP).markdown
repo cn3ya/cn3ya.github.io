@@ -2,7 +2,7 @@
 layout: post
 title:  "使用SNMP监控服务器性能"
 date:   2015-09-22 09:41:22
-categories: CouldFlare CDN DNS
+categories: SNMP
 ---
 
 ### 背景
@@ -102,3 +102,6 @@ access  AllGroup        ""      any     noauth  exact   AllView         none    
 https://www.juniper.net/documentation/en_US/junos/topics/example/junos-script-automation-snmp-script-example.html
 ```
 当监控参数没有通用OID时,需要我们自己编写脚本来获取数据
+```shell
+exec .1.3.6.1.4.1.2021.88.1 date /usr/bin/date +"%s"
+```

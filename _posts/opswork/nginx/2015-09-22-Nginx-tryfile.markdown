@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Nginx跨域配置"
+title:  "深入理解nginx的try_file指令"
 date:   2015-09-22 09:41:22
 categories: Ruby
 ---
