@@ -21,3 +21,9 @@ yum -y install iperf
 iperf -s 8000
 iperf -c 10.0.2.176 8000 -P 100 -b 1k
 ```
+
+CPU
+```
+time $(i=0; while (( i < 9999999 )); do (( i ++ )); done)
+```
+
