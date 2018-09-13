@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "使用Lua实现nginx的灰度发布"
+title:  "使用nginx缓存静态资源"
 date:   2016-10-11 13:21:30
 categories: Lua nginx gray_publish
 ---
@@ -13,9 +13,3 @@ categories: Lua nginx gray_publish
 #### 1、开发环境搭建
 
 #### 2、代码实现
-
-### 参考
-```
-https://tech.meituan.com/Oceanus_Custom_Traffic_Routing.html
-https://github.com/CNSRE/ABTestingGateway
-```

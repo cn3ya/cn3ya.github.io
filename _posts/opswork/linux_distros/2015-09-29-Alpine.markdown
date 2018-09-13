@@ -1,0 +1,14 @@
+---
+layout: post
+title:  "Alpine发行版本"
+date:   2015-09-22 09:41:22
+categories: CouldFlare CDN DNS
+---
+
+### 概述
+Alpine是一个压缩的linux发行版本,minrootfs版本只有2MB大小,十分适合做容器OS
+
+### 参数
+
+### 参考
++ [alpinelinux](https://alpinelinux.org/)

@@ -1,0 +1,9 @@
+---
+layout: post
+title:  "使用Gitlab部署私有git服务器"
+date:   2016-10-11 13:21:30
+categories: Ruby
+---
+
+### 背景
+git是目前软件项目使用广泛的版本控制软件

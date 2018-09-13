@@ -28,23 +28,22 @@ RabbitMQ使用 [AMQP协议](https://www.rabbitmq.com/resources/specs/amqp0-9-1.p
 + Server(broker)：接收客户端连接，实现AMQP消息队列的路由功能的进程.简单来说就是消息队列服务器实体。
 + Vhost：虚拟主机，一个broker里可以开设多个vhost，用作不同用户的权限分离。权限控制组，用户只能关联到一个vhost上，一个vhost中可以有若干个Exchange和Queue，默认的vhost是"/"
 + Exchange：接收生产者发送的消息，并根据Binding规则将消息路由给服务器中的队列 Exchange Type决定了Exchange路由消息额行为，例如，在RabbitMQ中，ExchangeType有Direct、Fanout和Topic三种，不同类型的Exchange路由得到行为是不一样的
-+ queue：用于存储还未消费的消息。消息队列载体，每个消息都会被投入到一个或多个队列。
++ Queue：用于存储还未消费的消息。消息队列载体，每个消息都会被投入到一个或多个队列。
 + Message：由Header和Body组成，Header是由生产者添加到各种属性的集合，包括Message是否被持久化，是由哪个Message Queue接收优先级是多少等，而Body是真正需要传输的APP数据
 + Binding: 绑定，它的作用就是把exchange和queue按照路由规则绑定起来。：
 + BindingKey： 在mq中设置的绑定key
 + Routing Key：路由关键字，exchange根据这个关键字进行消息投递。
-+ producer：消息生产者，就是投递消息的程序。
-+ consumer：消息消费者，就是接受消息的程序。
-+ channel：消息通道，在客户端的每个连接里，可建立多个channel，每个channel代表一个会话任务
++ Producer：消息生产者，就是投递消息的程序。
++ Consumer：消息消费者，就是接受消息的程序。
++ Channel：消息通道，在客户端的每个连接里，可建立多个channel，每个channel代表一个会话任务
 
 ### 流程说明
 消息队列的使用过程大概如下：
-+ （1）客户端（生产者）连接到消息队列服务器，打开一个channel。
-+ （2）客户端声明一个exchange，并设置相关属性。
-+ （3）客户端声明一个queue，并设置相关属性。
-+ （4）客户端使用routing key，在exchange和queue之间建立好绑定关系。
-+ （5）客户端投递消息到exchange。
-exchange接收到消息后，就根据消息的key和已经设置的binding，进行消息路由，将消息投递到一个或多个队列里。
+1. 客户端（生产者）连接到消息队列服务器，打开一个channel。
+2. 客户端声明一个exchange，并设置相关属性。
+3. 客户端声明一个queue，并设置相关属性。
+4. 客户端使用routing key，在exchange和queue之间建立好绑定关系。
+5. 客户端投递消息到exchange。exchange接收到消息后，就根据消息的key和已经设置的binding，进行消息路由，将消息投递到一个或多个队列里。
 exchange也有几个类型，完全根据key进行投递的叫做Direct交换机，例如，绑定时设置了routing key为”abc”，那么客户端提交的消息，只有设置了key为”abc”的才会投递到队列。对key进行模式匹配后进行投递的叫做Topic交换机，符号”#”匹配一个或多个词，符号”*”匹配正好一个词。例如”abc.#”匹配”abc.def.ghi”，”abc.*”只匹配”abc.def”。还有一种不需要key的，叫做Fanout交换机，它采取广播模式，一个消息进来时，投递到与该交换机绑定的所有队列。
 
 ### Exchange类型
@@ -84,6 +83,12 @@ Demo中创建了一个将一个exchange和一个queue进行fanout类型的bind.�
 + 4.“#”表示0个或若干个关键字，“*”表示一个关键字。如“log.*”能与“log.warn”匹配，无法与“log.warn.timeout”匹配；但是“log.#”能与上述两者匹配。
 + 5.同样，如果Exchange没有发现能够与routing_key匹配的Queue，则会抛弃此消息。
 
+### 性能测试
+rabbitmq团队提供了性能测试工具 [rabbitmq-perf-test](https://github.com/rabbitmq/rabbitmq-perf-test)<br/>
+下载后执行命令可以实现简单的测试
+```
+bin/runjava com.rabbitmq.perf.PerfTest -h amqp://guest:guest@192.168.99.100:5672 -x 1 -y 2 -u "throughput-test-1" -a --id "test 1"
+```
 
 ### 参考
 1. [AMQP 0-9-1 Model Explained](https://www.rabbitmq.com/tutorials/amqp-concepts.html)

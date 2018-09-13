@@ -1,0 +1,9 @@
+---
+layout: post
+title:  "Sentry错误日志统一管理"
+date:   2016-10-11 13:21:30
+categories: Ruby
+---
+
+### 背景
+在生产环境中调试错误经常遇到无法登陆线上吴

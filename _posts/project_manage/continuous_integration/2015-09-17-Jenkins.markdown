@@ -1,0 +1,9 @@
+---
+layout: post
+title:  "Jenkins持续集成"
+date:   2016-10-11 13:21:30
+categories: Ruby
+---
+
+### 背景
+在开发流程中,使用持续集成能减少部署的工作量和部署出错的可能

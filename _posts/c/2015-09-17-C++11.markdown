@@ -1,0 +1,10 @@
+---
+layout: post
+title:  "C++11标准"
+date:   2016-10-11 13:21:30
+categories: Ruby
+---
+
+### 默认构造和析构函数
++ 默认构造`default`
++ 默认析构函数`delete`
