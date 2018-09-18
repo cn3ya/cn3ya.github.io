@@ -1,0 +1,25 @@
+---
+layout: post
+title:  "Ceph集群存储"
+date:   2016-10-11 13:21:30
+categories: Ruby
+---
+
+### github地址
+```
+https://github.com/ceph/ceph
+```
+
+### 术语
+
+| item  | description                                    |
+|:------|:-----------------------------------------------|
+| PG    | Placement Group                                |
+| OSD   | Object Storage Device                          |
+| MDS   | Ceph metadata software                         |
+| MON   | Monitor                                        |
+| CRUSH | Controllled Replication Under Scalable Hashing |
+
+### 参考
++ [Ceph Architecture](http://docs.ceph.com/docs/mimic/architecture/)
++ [Reliable, Scalable, and High-Performance Distributed Storage - Ceph](https://ceph.com/wp-content/uploads/2016/08/weil-thesis.pdf)
