@@ -1,0 +1,23 @@
+---
+layout: post
+title:  "dubbo远程调用框架"
+date:   2015-09-06 13:21:30
+categories: kong
+---
+
+### 通信协议
+
+### 术语
+
+| terminology | explain                       |
+|:------------|:------------------------------|
+| RPC         | remote procedure calls        |
+| IDL         | interface definition language |
+
+#### 1、环境
+
+#### 2、安装
+
+#### 3、配置
+
+#### 4、测试

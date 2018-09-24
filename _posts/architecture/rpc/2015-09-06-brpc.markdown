@@ -1,0 +1,26 @@
+---
+layout: post
+title:  "brpc远程调用框架"
+date:   2015-09-06 13:21:30
+categories: kong
+---
+
+### github地址
+```
+https://github.com/brpc/brpc
+```
+
+### 术语
+
+| terminology | explain                       |
+|:------------|:------------------------------|
+| RPC         | remote procedure calls        |
+| IDL         | interface definition language |
+
+#### 1、环境
+
+#### 2、安装
+
+#### 3、配置
+
+#### 4、测试
