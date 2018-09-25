@@ -1,18 +1,21 @@
 ---
 layout: post
-title:  "使用Spring Boot Actuator进行调试"
+title:  "Spring Boot Actuator组件"
 date:   2015-09-22 09:41:22
-categories: CouldFlare CDN DNS
+categories: spring actuator
 ---
 
 ### 概述
-Spring框架是java开发中不可获取的技术,他实现了Ioc容器用来管理bean
+在生成环境中，经常需要实现一些通用的功能，如应用监控，性能参数收集，流量传播等功能。Spring Boot Actuator组件就提供了这些功能
+
+### 安装
+#### 添加依赖
+
+#### 配置
 
 ### 用例
-#### bean绑定
-简单理解bean是由容器管理的类
-1. 使用`@Bean`可以标记一个方法,该方法返回bean的实例.
-2. `@Bean`有`scope`属性用来标识是`单例`绑定还是`原型`绑定.
+#### 1 监控应用在线状态
+#### 2
 
 ### 参考
 + [Part V. Spring Boot Actuator: Production-ready features](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready)
