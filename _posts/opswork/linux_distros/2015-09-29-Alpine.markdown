@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Alpine发行版本"
+title:  "Linux发行版本:Alpine"
 date:   2015-09-22 09:41:22
 categories: CouldFlare CDN DNS
 ---

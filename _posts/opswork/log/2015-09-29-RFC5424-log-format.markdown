@@ -1,0 +1,12 @@
+---
+layout: post
+title:  "rfc5424日志格式"
+date:   2015-09-22 09:41:22
+categories: CouldFlare CDN DNS
+---
+
+### 背景
+
+
+### 参考
++ [RFC5424](https://tools.ietf.org/html/rfc5424#page-8)
