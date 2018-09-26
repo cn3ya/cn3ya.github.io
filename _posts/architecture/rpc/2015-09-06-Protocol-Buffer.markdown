@@ -8,12 +8,5 @@ categories: ProtoBuf
 ### 应用场景
 分布式环境中使用RPC远程进程调用
 
-### 术语
-
-#### 1、环境
-
-#### 2、安装
-
-#### 3、配置
-
-#### 4、测试
+### 参考
++ [Language Guide (proto3)](https://developers.google.com/protocol-buffers/docs/proto3)
