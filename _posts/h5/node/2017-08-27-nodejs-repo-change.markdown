@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Node.js依赖仓库修改"
+title:  "Node.js仓库地址修改"
 date:   2016-10-11 13:21:30
 categories: node repo
 ---
