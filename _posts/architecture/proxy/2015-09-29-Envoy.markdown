@@ -10,6 +10,31 @@ categories: envoy proxy
 https://github.com/cn3ya/envoy_demo
 ```
 
+### 术语
+
+| item                  | 描述          |
+|:----------------------|:-------------|
+| Host                  | 主机          |
+| Downstream            | 下游          |
+| Upstream              | 上游          |
+| Listener              | 监听器        |
+| Cluster               | 集群          |
+| Mesh                  | 网格(一组主机) |
+| Runtime configuration | 运行时配置     |
+
+
+### 服务发现
+用来解析配置中集群成员节点的方式
+
+| type                               | 类型           |
+|:-----------------------------------|:--------------|
+| Static                             | 静态类型        |
+| Strict DNS                         | 严格的 DNS 类型 |
+| Logical DNS                        | 逻辑 DNS 类型   |
+| Original destination               | 原始目的地类型   |
+| Endpoint discovery service (EDS)   | 入口发现服务    |
+| Service discovery service (v1 SDS) | 服务发现服务    |
+
 ### 静态路由
 实现将发送到10000端口的请求转发到service-a容器的3000端口
 ```yaml
