@@ -1,0 +1,21 @@
+---
+layout: post
+title:  "Git操作"
+date:   2016-10-11 13:21:30
+categories: Ruby
+---
+
+### 删除本地commit
+```
+git reset --hard origin/<branch_name>
+```
+
+### 检出某个文件
+```
+git checkout REF -- filename/*
+```
+
+### 从版本库中移除文件
+```
+git rm --cached filename
+```
