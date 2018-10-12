@@ -2,18 +2,58 @@
 layout: post
 title:  "Squid缓存"
 date:   2015-09-06 13:21:30
-categories: lvs concurrent
+categories: squid cache
 ---
 
-### 应用场景
-在生产环境中,经常需要使用多台服务器来提供系统的并发处理能
+### 安装
 
-###步骤
+#### 1.目标环境
+```bash
+#cat /etc/redhat-release
+CentOS Linux release 7.4.1708 (Core)
+```
+#### 2.安装yum包
+```shell
+yum install squid
+```
+#### 3.启动服务
+```shell
+systemctl start squid
+systemctl enable squid
+```
+#### 4.安装验证
+```
+squidclient -h localhost -p 3128 mgr:info
+squidclient -h localhost -p 3128 mgr:menu 
+```
+### 使用场景
 
-####1、环境
+#### 1.缓存yum包
+编辑`/etc/yum.conf`文件,添加proxy配置
+```
+[main]
+...
+proxy=http://localhost:3128
+```
 
-####2、安装
+#### 2.缓存npm包
+```
+npm config set proxy http://localhost:3128
+```
 
-####3、配置
+#### 3.缓存docker镜像
+编辑文件`~/.docker/config.json`
+```
+{
+    "proxies":
+    {
+        "default":
+        {
+            "httpProxy": "http://127.0.0.1:3001",
+            "noProxy": "*.test.example.com,.example2.com"
+        }
+    }
+}
+```
 
-####4、测试
+#### 4.jenkins构建提速
