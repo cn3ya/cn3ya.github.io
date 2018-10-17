@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "SSH端口映射"
+title:  "BGP协议"
 date:   2015-09-22 09:41:22
 categories: SSH port_mapping
 ---
@@ -11,6 +11,3 @@ categories: SSH port_mapping
 ### 需求
 
 ### 实现
-```
-ssh -o ServerAliveInterval=60 -CNfL 0.0.0.0:5589:target_ip:3306 root@proxy_ip
-```
