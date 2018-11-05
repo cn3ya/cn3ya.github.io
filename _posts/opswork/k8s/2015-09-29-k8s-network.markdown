@@ -1,0 +1,21 @@
+---
+layout: post
+title:  "k8s网络通信"
+date:   2015-09-22 09:41:22
+categories: CouldFlare CDN DNS
+---
+
+### docker网络模型
+(CNM)Container Network Model,
+
+### pod中容器通信
+使用共享命名网络进行通信,各容器直接使用localhost加端口进行访问,各容器中的端口不能重复.一个pod只有一个ip地址,所有该pod的容器共享同一个ip地址.创建共享命名空间通常是使用k8s.gcr.io/pause镜像来实现的
+
+### 同节点pod通信
+使用CNI(Container Network Interface)容器网络接口
+
+### 节点间pod通信
+使用CNI(Container Network Interface)容器网络接口
+
+### 参考
++ [networking design document](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/network/networking.md)

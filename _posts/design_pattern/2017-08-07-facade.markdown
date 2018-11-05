@@ -1,0 +1,7 @@
+---
+layout: post
+title:  "设计模式:facade"
+date:   2016-10-11 13:21:30
+categories: facade
+---
+

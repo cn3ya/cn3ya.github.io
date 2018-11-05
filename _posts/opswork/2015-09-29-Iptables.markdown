@@ -5,5 +5,117 @@ date:   2015-09-22 09:41:22
 categories: iptables
 ---
 
+### iptables流向图
+
+```
+                                  netfilter hooks
+
+                                  +-----------> local +-----------+
+                                  |             process           |
+                                  |                               |
+                                  |                               |
+                                  |                               |
+                                  |                               v
+  MANGLE            +-------------+--------+
+  FILTER            |                      |               +----------------------+    RAW
+  SECURITY          |        input         |               |                      |    conntrack
+  SNAT              |                      |               |     output           |    MANGLE
+                    +------+---------------+               |                      |    DNAT
+                           ^                               +-------+--------------+    routing
+                           |                                       |                   FILTER
+                           |                                       |                   SECURITY
+                           |            +---------------------+    |         +-------------+
+     +-----------+                      |                     |    +-------> |             |
++--> |pre routing+----  route    -----> |      forward        |              |post routing +---->
+     |           |      lookup          |                     +------------> |             |
+     +-----------+                      +---------------------+              +-------------+
+     
+     RAW                                       MANGLE                         MANGLE
+     conntrack                                 FILTER                         SNAT
+     MANGLE                                    SECURITY
+     DNAT
+     routing
+```
+
+### 表
+
+| 优先级 | 表名                           | 功能 |
+|:------|:------------------------------|:----|
+| 1     | raw                           | 追踪 |
+|       | (connection tracking enabled) |     |
+| 2     | mangle                        | 分组 |
+| 3     | nat (DNAT)                    | NAT |
+|       | (routing decision)            |     |
+| 4     | filter                        | 过滤 |
+| 5     | security                      |     |
+| 6     | nat (SNAT)                    | NAT |
+
+### 链
+
+| 链名         | 作用                        |
+|:------------|:---------------------------|
+| INPUT       | 发往本机的报文                |
+| OUTPUT      | 由本机发出的报文              |
+| FORWARD     | 经由本机转发的报文             |
+| PREROUTING  | 报文到达本机，进行路由决策之前   |
+| POSTROUTING | 报文由本机发出，进行路由决策之后 |
+
+### 动作
+
+| 动作                | 说明              |
+|:-------------------|:-----------------|
+| iptables -A        | 添加规则           |
+| iptables -D        | 删除规则           |
+| iptables -F        | 删除所有规则       |
+| iptables -I        | 指定编号插入一个规则 |
+| iptables -L        | 列出指定链中所有规则 |
+| iptables -t nat -L | 列出NAT表中规则    |
+| iptables -N        | 添加用户定义链      |
+| iptables -X        | 删除用户定义链      |
+| iptables -P        | 修改链的默认设置    |
+
+### 规则
+
+| 规则               | 说明               |
+|:------------------|:------------------|
+| -j DROP           | 拒绝               |
+| -j ACCEPT         | 允许               |
+| -j REJECT         | 拒绝并向返回        |
+| -j LOG            | /var/log/messages |
+| --dport           | 指定目标端口        |
+| --sport           | 指定源端口          |
+| -p tcp            | 指定协议为tcp       |
+| -m mac –mac       | 绑定MAC地址         |
+| -m limit –limit   | 设置时间策列        |
+| -s 10.10.0.0/16   | 指定源地址或地址段    |
+| -d 10.10.0.0/16   | 指定目标地址或地址段  |
+
+### 常用
+
++ 端口转发
+```bash
+#8000端口转发到3000端口
+iptables -t nat -A PREROUTING -p tcp --dport 8000 -j REDIRECT --to-ports 3000
+iptables -t nat -A OUTPUT -p tcp -d 127.0.0.1 --dport 8000 -j DNAT --to 127.0.0.1:3000
+
+#ip转发
+iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
+iptables -t nat -A PREROUTING -p tcp -m tcp --dport 8001 -j DNAT --to 172.25.74.65:3000
+iptables -t nat -A POSTROUTING -d 172.25.74.65 -p tcp -m tcp --dport 3000 -j MASQUERADE
+iptables -t nat -A POSTROUTING -d 172.25.74.65 -p tcp -m tcp --dport 3000 -j SNAT --to 172.25.74.67
+
+#流量复制
+iptables -t mangle -I PREROUTING -p tcp --dport 3000 -j TEE --gateway 172.25.74.65
+iptables -t mangle -I PREROUTING -p tcp --dport 3000 -j LOG --log-level error --log-prefix "PRE_TEST123 "
+iptables -t mangle -I FORWARD -p tcp -d 172.25.74.65 -j ACCEPT
+iptables -t mangle -I FORWARD -p tcp -d 172.25.74.65 -j LOG --log-level error --log-prefix "FORWARD_TEST123 "
+iptables -t mangle -I POSTROUTING -p tcp --dport 3000 -j TEE --gateway 172.25.74.65
+iptables -t mangle -I POSTROUTING -p tcp --dport 3000 -j LOG --log-level error --log-prefix "POST_TEST123 "
+
+
+iptables -t mangle -A PREROUTING -j LOG --log-level error --log-prefix "PRE_ERROR ";
+iptables -t mangle -A POSTROUTING -j LOG --log-level error --log-prefix "POST_ERROR ";
+```
+
 ### 参考
-+ 
++ [IPTables CheatSheet](https://gist.github.com/mcastelino/c38e71eb0809d1427a6650d843c42ac2)
