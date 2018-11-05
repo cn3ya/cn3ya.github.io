@@ -62,17 +62,19 @@ categories: iptables
 
 ### 动作
 
-| 动作                | 说明              |
-|:-------------------|:-----------------|
-| iptables -A        | 添加规则           |
-| iptables -D        | 删除规则           |
-| iptables -F        | 删除所有规则       |
-| iptables -I        | 指定编号插入一个规则 |
-| iptables -L        | 列出指定链中所有规则 |
-| iptables -t nat -L | 列出NAT表中规则    |
-| iptables -N        | 添加用户定义链      |
-| iptables -X        | 删除用户定义链      |
-| iptables -P        | 修改链的默认设置    |
+| 动作                                 | 说明              |
+|:------------------------------------|:-----------------|
+| iptables -A                         | 添加规则           |
+| iptables -D 2                       | 删除规则           |
+| iptables -F                         | 删除所有规则       |
+| iptables -I                         | 指定编号插入一个规则 |
+| iptables -L                         | 列出指定链中所有规则 |
+| iptables -t nat -vnL  --line-number | 列出NAT表中规则    |
+| iptables -N                         | 添加用户定义链      |
+| iptables -X                         | 删除用户定义链      |
+| iptables -P                         | 修改链的默认设置    |
+| iptables -S                         | 显示命令历史       |
+
 
 ### 规则
 
@@ -90,9 +92,10 @@ categories: iptables
 | -s 10.10.0.0/16   | 指定源地址或地址段    |
 | -d 10.10.0.0/16   | 指定目标地址或地址段  |
 
-### 常用
+### 常用样例
 
 + 端口转发
+
 ```bash
 #8000端口转发到3000端口
 iptables -t nat -A PREROUTING -p tcp --dport 8000 -j REDIRECT --to-ports 3000
@@ -112,7 +115,18 @@ iptables -t mangle -I FORWARD -p tcp -d 172.25.74.65 -j LOG --log-level error --
 iptables -t mangle -I POSTROUTING -p tcp --dport 3000 -j TEE --gateway 172.25.74.65
 iptables -t mangle -I POSTROUTING -p tcp --dport 3000 -j LOG --log-level error --log-prefix "POST_TEST123 "
 
+iptables -t mangle -A PREROUTING -p tcp –dport 3000 -m state –state NEW,ESTABLISHED,RELATED -j TEE –gateway 127.0.0.1
+iptables -t nat -A PREROUTING -p tcp –dport 3000 -m statistic –mode nth –every 3 –packet 0 -m state –state NEW,ESTABLISHED,RELATED -j DNAT –to-destination 10.0.10.200:12201
+iptables -t nat -A PREROUTING -p tcp –dport 3000 -m statistic –mode nth –every 2 –packet 0 -m state –state NEW,ESTABLISHED,RELATED -j DNAT –to-destination 10.0.10.201:12201
+iptables -t nat -A PREROUTING -p tcp –dport 3000 -m state –state NEW,ESTABLISHED,RELATED -j DNAT –to-destination 10.0.10.202:12201
 
+#调试
+modprobe nf_log_ipv4
+sysctl net.netfilter.nf_log.2=nf_log_ipv4
+iptables -t raw -I PREROUTING -p tcp -j TRACE
+iptables -t raw -I OUTPUT -p tcp -j TRACE
+iptables -t raw -I PREROUTING -p icmp -j TRACE
+iptables -t raw -I OUTPUT -p icmp -j TRACE
 iptables -t mangle -A PREROUTING -j LOG --log-level error --log-prefix "PRE_ERROR ";
 iptables -t mangle -A POSTROUTING -j LOG --log-level error --log-prefix "POST_ERROR ";
 ```
