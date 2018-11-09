@@ -17,5 +17,8 @@ categories: CouldFlare CDN DNS
 ### 节点间pod通信
 使用CNI(Container Network Interface)容器网络接口
 
+### 从外部访问Kubernetes中的Pod
+
 ### 参考
 + [networking design document](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/network/networking.md)
++ [从外部访问Kubernetes中的Pod](https://jimmysong.io/kubernetes-handbook/guide/accessing-kubernetes-pods-from-outside-of-the-cluster.html)
