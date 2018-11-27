@@ -1,0 +1,55 @@
+---
+layout: post
+title:  "PgSQL处理json数据"
+date:   2017-08-23 13:21:30
+categories: db
+tags: sql
+---
+
+### 建表
+```sql
+CREATE TABLE "public"."json_test" (
+"id" int4,
+"json" jsonb
+)
+;
+```
+
+### json和jsonb
+
+| 类型   | 说明 |
+|:------|:----|
+| json  |     |
+| jsonb |     |
+
+### 插入
+```sql
+INSERT INTO "public"."json_test" ("id", "json")
+VALUES
+	(
+		'1',
+		'{"jsonb": true, "product": "PostgreSQL", "version": 9.4}'
+	);
+```
+
+### 查询
+```sql
+select json->'product' as product from json_test;
+```
+
+### 搜索
+```sql
+select * from json_test where json->'version'='9.4';
+```
+
+### 修改
+```sql
+UPDATE json_test
+SET json = jsonb_set (json, '{jsonb}', 'false')
+WHERE
+	("id" = '1');
+```
+
+### 参考
++ [JSON Types](https://www.postgresql.org/docs/10/datatype-json.html)
++ [JSON Functions and Operators](https://www.postgresql.org/docs/9.5/functions-json.html)

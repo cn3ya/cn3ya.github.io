@@ -29,5 +29,16 @@ categories: CouldFlare CDN DNS
 | Container Resource Monitoring | 获取节点信息    |
 | Cluster-level Logging         |               |
 
+### 资源类型
+
+|            |
+|:-----------|
+| Pod        |
+|Service|
+| ReplicaSet |
+| Replication Controller|
+| Deployment |
+| Ingress    |
+
 ### 参考
 + [Kubernetes Components](https://kubernetes.io/docs/concepts/overview/components/)
