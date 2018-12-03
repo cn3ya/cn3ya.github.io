@@ -1,0 +1,54 @@
+---
+layout: post
+title:  "Git-Repo多仓库管理"
+date:   2016-10-11 13:21:30
+categories: Ruby
+---
+
+### 编写manifest文件
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote  name="demo"
+           fetch=".."
+           review="https://github.com/cn3ya/" />
+
+  <default revision="master"
+           remote="demo"
+           sync-j="4" />
+
+  <project path="git_repo_demo_project1" name="cn3ya/git_repo_demo_project1" groups="default" />
+  <project path="git_repo_demo_project2" name="cn3ya/git_repo_demo_project2" groups="default" />
+
+</manifest>
+```
+
+### 初始化项目
+```
+repo init -u https://github.com/cn3ya/git_repo_demo_manifest.git
+```
+
+### 创建分支
+```
+repo start test_branch
+```
+
+### 查看分支
+```
+repo branches
+```
+
+### 切换分支
+```
+repo forall -c git checkout master
+```
+
+### 提交代码
+```
+repo forall -c git add -A
+repo forall -c git commit -m 'test commit'
+repo forall -c git push demo test_branch
+```
+
+### 参考
++ [Google Git-Repo (Android)多仓库项目管理](https://rocko.xyz/2018/11/22/google-git-repo-%E5%A4%9A%E4%BB%93%E5%BA%93%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/)
