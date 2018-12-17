@@ -19,6 +19,10 @@ tags: sql
 | MEMORY/HEAP    | HASH, BTREE             |
 | NDB            | HASH, BTREE             |
 
+### 索引长度
+1. innodb_large_prefix配置项关闭(767byte), 打开(3072byte)
+
 ### 参考
 + [8.3.8 Comparison of B-Tree and Hash Indexes](https://dev.mysql.com/doc/refman/5.7/en/index-btree-hash.html)
 + [Table 13.1 Index Types Per Storage Engine](https://dev.mysql.com/doc/refman/5.7/en/create-index.html#create-index-storage-engine-index-types)
++ [Limits on InnoDB Tables](https://dev.mysql.com/doc/refman/5.6/en/innodb-restrictions.html)
