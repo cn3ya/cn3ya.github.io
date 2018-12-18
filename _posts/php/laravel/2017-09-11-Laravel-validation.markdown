@@ -64,48 +64,48 @@ tags: PHP Laravel Validation
 
 #### 内容限定
 
-|                         | 说明                                          |
-|:------------------------|:---------------------------------------------|
-| accepted                | `yes`,`on`,`1`,`true`                        |
-| active_url              | 有A或AAAA的DNS记录                             |
-| alpha                   | 字母                                          |
-| alpha_dash              | 字母, 数字, 下划线                              |
-| alpha_num               | 字母, 数字                                     |
-| array                   | 数组                                          |
-| boolean                 | `true`,  `false`, `1`, `0`, `"1"`, and `"0"` |
-| date                    | 日期                                          |
-| digits:length           | 数字                                          |
-| email                   | 电子邮件                                       |
-| file                    | 上传文件                                       |
-| image                   | 是否为图片                                     |
-| in:foo,bar,...          | 枚举值                                        |
-| integer                 | 整型                                          |
-| ip                      |                                              |
-| ipv4                    |                                              |
-| ipv6                    |                                              |
-| json                    |                                              |
-| not_in:foo,bar,...      | 不在枚举值                                     |
-| not_regex:pattern       |                                              |
-| numeric                 |                                              |
-| regex:pattern           |                                              |
-| same:field              |                                              |
-| starts_with:foo,bar,... |                                              |
-| string                  |                                              |
-| timezone                |                                              |
-| url                     |                                              |
-| uuid                    |                                              |
+|                         | 说明                                         |
+|:------------------------|:--------------------------------------------|
+| accepted                | `yes`,`on`,`1`,`true`                       |
+| active_url              | 有A或AAAA的DNS记录                            |
+| alpha                   | 字母                                         |
+| alpha_dash              | 字母, 数字, 下划线                             |
+| alpha_num               | 字母, 数字                                    |
+| array                   | 数组                                         |
+| boolean                 | `true`, `false`, `1`, `0`, `"1"`, and `"0"` |
+| date                    | 日期                                         |
+| digits:length           | 数字                                         |
+| email                   | 电子邮件                                      |
+| file                    | 上传文件                                      |
+| image                   | 是否为图片                                    |
+| in:foo,bar,...          | 枚举值                                       |
+| integer                 | 整型                                         |
+| ip                      | IP地址                                       |
+| ipv4                    | IPv4地址                                     |
+| ipv6                    | IPv6地址                                     |
+| json                    | json类型                                     |
+| not_in:foo,bar,...      | 不在枚举值                                    |
+| not_regex:pattern       |                                             |
+| numeric                 |                                             |
+| regex:pattern           |                                             |
+| same:field              |                                             |
+| starts_with:foo,bar,... |                                             |
+| string                  |                                             |
+| timezone                |                                             |
+| url                     |                                             |
+| uuid                    |                                             |
 
 #### 日期
 
-| 规则                  | 说明                                                                                                  |
-|:---------------------|:-----------------------------------------------------------------------------------------------------|
-| after:date           | `'start_date' => 'required|date|after:tomorrow'` `'finish_date' => 'required|date|after:start_date'` |
-| after_or_equal:date  |                                                                                                      |
-| before:date          |                                                                                                      |
-| before_or_equal:date |                                                                                                      |
-| date                 |                                                                                                      |
-| date_equals:date     |                                                                                                      |
-| date_format:format   |                                                                                                      |
+| 规则                  | 说明 |
+|:---------------------|:----|
+| after:date           |     |
+| after_or_equal:date  |     |
+| before:date          |     |
+| before_or_equal:date |     |
+| date                 |     |
+| date_equals:date     |     |
+| date_format:format   |     |
 
 
 #### 文件
@@ -125,13 +125,14 @@ tags: PHP Laravel Validation
 | unique:table,column,except,idColumn |                             |
 
 ### 扩展校验规则
+
 1. 使用规则对象
 
 ```
 php artisan make:rule Uppercase
 ```
 
-2. 使用闭包
+1. 使用闭包
 
 ```php
 $validator = Validator::make($request->all(), [
@@ -147,7 +148,7 @@ $validator = Validator::make($request->all(), [
 ]);
 ```
 
-3. 扩展校验器
+1. 扩展校验器
 
 ```php
 Validator::extend('foo', function ($attribute, $value, $parameters, $validator) {
@@ -177,7 +178,9 @@ $validator = app('validator')->make($metaArray, $this->validationRule, Validatio
 ```
 
 ### 修改全局校验错误提示信息
+
 修改`resources/lang/cn/validation.php`文件
+
 ```php
 return [
     'email' => [

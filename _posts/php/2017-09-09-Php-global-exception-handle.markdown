@@ -11,13 +11,13 @@ tags: PHP Exception
 
 ### 实现
 注册php全局异常处理函数
-{% highlight php %}
+```php
 set_error_handler()
 set_exception_handler()
 register_shutdown_function()
-{% endhighlight %}
+```
 Laravel框架使用`\Illuminate\Foundation\Bootstrap\HandleExceptions`类进行异常管理
-{% highlight php %}
+```php
 public function bootstrap(Application $app)
 {
     $this->app = $app;
@@ -29,4 +29,4 @@ public function bootstrap(Application $app)
         ini_set('display_errors', 'Off');
     }
 }
-{% endhighlight %}
+```

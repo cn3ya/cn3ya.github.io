@@ -11,11 +11,11 @@ tags: PHP Laravel Debug
 
 ### 实现
 安装debugbar依赖
-{% highlight shell %}
+```shell
 composer require barryvdh/laravel-debugbar --dev
-{% endhighlight %}
+```
 添加middleware将debugbar信息注入到接口输出
-{% highlight php %}
+```php
 class DebugBar
 {
     public function handle($request, Closure $next, $guard = null)
@@ -32,9 +32,9 @@ class DebugBar
         return $response;
     }
 }
-{% endhighlight %}
+```
 修改`\App\Exceptions\Handler`的`render`方法,将debugbar信息注入到接口异常输出
-{% highlight php %}
+```php
 public function render($request, Exception $exception)
 {
     if ($exception instanceof RequestException)
@@ -54,4 +54,4 @@ public function render($request, Exception $exception)
     }
     return parent::render($request, $exception);
 }
-{% endhighlight %}
+```

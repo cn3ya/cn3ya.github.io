@@ -11,7 +11,7 @@ Laravel框架实现的ORM能有效的提高开发效率,当业务场景越来越
 
 ### 实现1
 使用`\Illuminate\Database\Eloquent\Builder`类的`fromQuery`方法,可以实现通过复杂查询sql获取模型的需要
-{% highlight php %}
+```php
     $client = $webapp->client;
     $clientArray = explode(',',$client);
     foreach ($clientArray as &$item) {
@@ -38,11 +38,11 @@ Laravel框架实现的ORM能有效的提高开发效率,当业务场景越来越
         order by a.name
 SQL;
     return ComponentVersionModel::fromQuery($sql);
-{% endhighlight %}
+```
 
 ### 实现2
 使用上面的方法有一个缺点,不能使用laravel自带的分页器.改进方法如下
-{% highlight php %}
+```php
 /** @var Builder $query */
 $query = WebappPictureModel::leftJoin('webapp_pic_folder', 'webapp_pic_folder.id', '=', 'webapp_pic.folder_id');
 $extraData['folderId'] && $query->where(['webapp_pic.folder_id'=>$extraData['folderId']]);
@@ -53,4 +53,4 @@ $query->select('webapp_pic.*');
 $paginator = $query->paginate($pageSize, ['*'], 'page', $page);
 $items = $paginator->items();
 $total = $paginator->total();
-{% endhighlight %}
+```

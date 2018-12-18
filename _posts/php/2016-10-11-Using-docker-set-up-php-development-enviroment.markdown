@@ -21,27 +21,27 @@ docker容器技术是当今非常热门的容器技术，他利用linux内核的
 
 #### 2、容器与宿主主机的数据交换
 docker本身提供文件和文件夹映射的功能,使用命令行参数`-v $(目录):$(容器目录)`或docker-compose.yml配置文件的volumes配置项就可以将宿主机上的文件或文件夹映射到容器中,修改宿主机上的文件容器中文件类容随之改变,灵活运用这一特性可以修改各项服务的配置文件,实时生效代码的修改
-{% highlight php %}
+```yaml
   volumes:
     - ./www:/usr/share/nginx/html
     - ./conf/default.conf:/etc/nginx/conf.d/default.conf
-{% endhighlight %}
+```
 #### 3、容器之间通行
 docker命令行工具提供参数`--link`用来关联两个容器,docker-compose也提供links配置项关联容器使得容器之间可以彼此访问
-{% highlight php %}
+```yaml
   links:
     - redis
     - mysql
-{% endhighlight %}
+```
 #### 4、端口映射
 为了方便使用navicat等GUI工具对mysql或redis进行访问和管理,需要配置端口映射.
-{% highlight php %}
+```yaml
   ports:
     - "3306:3306"
-{% endhighlight %}
+```
 #### 5、最终docker-compose.yml文件
 以下是最终docker-compose.yml配置文件使用命令`docker-compose up -d`可以创建一个php开发环境
-{% highlight php %}
+```yaml
 nginx:
   container_name: my_nginx
   image: nginx:alpine
@@ -83,4 +83,4 @@ mysql:
     - MYSQL_DATABASE=php
     - MYSQL_USER=php
     - MYSQL_PASSWORD=php
-{% endhighlight %}
+```
