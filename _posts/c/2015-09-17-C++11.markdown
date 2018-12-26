@@ -2,7 +2,7 @@
 layout: post
 title:  "C++11标准"
 date:   2016-10-11 13:21:30
-categories: Ruby
+categories: C++
 ---
 
 ### 默认构造和析构函数

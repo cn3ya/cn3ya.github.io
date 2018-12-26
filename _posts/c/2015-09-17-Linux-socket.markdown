@@ -2,7 +2,7 @@
 layout: post
 title:  "linux网络编程"
 date:   2016-10-11 13:21:30
-categories: Ruby
+categories: C++
 ---
 
 ### 结构体

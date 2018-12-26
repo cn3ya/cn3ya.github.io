@@ -2,7 +2,7 @@
 layout: post
 title:  "进程、线程和协程"
 date:   2016-10-11 13:21:30
-categories: Ruby
+categories: C++
 ---
 
 ### 背景
