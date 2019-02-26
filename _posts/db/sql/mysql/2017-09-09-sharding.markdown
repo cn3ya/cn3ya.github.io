@@ -1,0 +1,12 @@
+---
+layout: post
+title:  "分库分表"
+date:   2017-08-23 13:21:30
+categories: db
+tags: sql
+---
+
+### crc32路由
+可配置调整
+
+###
