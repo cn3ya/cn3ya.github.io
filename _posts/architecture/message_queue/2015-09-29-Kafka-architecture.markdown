@@ -10,6 +10,8 @@ Kafka号称是百万级的消息中间件,在日志处理领域有着成功的�
 
 ### 术语
 
+Kafka Zero-Copy
+
 ### 性能测试
 ```
 bin/kafka-producer-perf-test.sh \
@@ -22,3 +24,4 @@ bin/kafka-producer-perf-test.sh \
 
 ### 参考
 1. [Kafka Documentation](https://kafka.apache.org/documentation/)
+2. [Zero-Copy](https://en.wikipedia.org/wiki/Zero-copy)

@@ -86,6 +86,16 @@ static_resources:
 
 ### 动态路由
 
+### 服务列表
+
+|     |                            |
+|:----|:---------------------------|
+| LDS | Listener discovery service |
+| EDS | Endpoint discovery service |
+| RDS | Route discovery service    |
+| CDS | Cluster discovery service  |
+| SDS | Secret discovery service   |
+
 ### 参考
 + [Envoy documentation](https://www.envoyproxy.io/docs/envoy/latest/)
 + [Envoy 官方文档中文版](http://www.servicemesher.com/envoy/)
