@@ -1,0 +1,12 @@
+---
+layout: post
+title:  "Redis缓存"
+date:   2015-09-06 13:21:30
+categories: squid cache
+---
+
+### 类型
+
+### 集群
+
+### 持久化

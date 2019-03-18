@@ -1,0 +1,14 @@
+---
+layout: post
+title:  "Java的IO类型"
+date:   2015-09-22 09:41:22
+categories: java io
+---
+
+|    |          |
+|:---|:---------|
+|  1  | 阻塞I/O   |
+|  2  | 非阻塞I/O |
+|  3  | I/O复用   |
+|  4  | 信号驱动IO |
+|  5  | 异步I/O   |
