@@ -30,3 +30,4 @@ categories: C++
 
 ### 参考
 1. [Zero Copy](https://www.linuxjournal.com/article/6345)
+2. [Efficient data transfer through zero copy](https://developer.ibm.com/articles/j-zerocopy/)
