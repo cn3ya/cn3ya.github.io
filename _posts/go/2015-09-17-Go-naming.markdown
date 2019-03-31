@@ -5,5 +5,18 @@ date:   2016-10-11 13:21:30
 categories: go
 ---
 
-### 背景
+### 私有和公有变量
+
+|     |     |      |
+|:----|:----|:-----|
+| 大写 | 公共 | Name |
+| 小写 | 私有 | name |
+
+### JSON
+
+### XML
+
+### value method和pointer method
+
+### struct tag
 

@@ -6,8 +6,17 @@ categories: go
 ---
 
 ### 背景
+
 1. Unbuffered Channels
 2. Pipelines
 3. Unidirectional Channel Types
 4. Buffered Channels
 
+### 并发模型(Concurrency Models)
+
+|        |
+|:-------|
+| CSP    |
+| Actor  |
+| STM    |
+| Guilds |
