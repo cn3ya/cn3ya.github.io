@@ -19,3 +19,10 @@ git checkout REF -- filename/*
 ```
 git rm --cached filename
 ```
+
+### 子模块
+```
+git submodule
+git submodule add {url} {path}
+git submodule update --init
+```
