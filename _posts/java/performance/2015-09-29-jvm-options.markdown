@@ -25,7 +25,7 @@ String options are set with -XX:<option>=<string>, are usually used to specify a
 | -server | 服务端    |
 | -d32    | 32或64位 |
 
-#### 内存
+#### 内存和GC
 
 | 参数                            | 说明           |
 |---------------------------------|----------------|
