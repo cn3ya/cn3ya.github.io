@@ -1,24 +1,23 @@
 ---
 layout: post
-title:  "Oracle异常处理"
+title:  "Oracle生产环境修改表特性"
 date:   2016-10-11 13:21:30
 categories: oracle
 ---
 
-### 存储过程
+### 参考数据量
+
+### 增删字段
 ```
 CREATE TABLESPACE TEST_SPACE
 DATAFILE '/ORADATA/ORCL/TEST_SPACE.DBF' SIZE 1000M;
 ```
 
-### 异常处理
+### 增删索引
 ```
 DROP TABLESPACE TEST_SPACE INCLUDING CONTENTS AND DATAFILES;
 DROP TABLESPACE TEST_SPACE INCLUDING CONTENTS AND DATAFILES CASCADE CONSTRAINTS;
 ```
-
-### sql定位
-
 
 ### 参考
 + Oracle Database Reference

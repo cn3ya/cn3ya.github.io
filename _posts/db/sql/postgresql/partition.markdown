@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Oracle创建用户"
+title:  "PostgreSQL分区表"
 date:   2016-10-11 13:21:30
-categories: oracle user
+categories: PostgreSQL PGSQL
 ---
 
 ### 创建用户
@@ -22,10 +22,7 @@ create user test identified by test_password default tablespace test_space;
 
 ### 查看用户
 ```
--- 获取当前用户
-SELECT T.* FROM USER_USERS T;
--- 所有用户
-SELECT T.* FROM DBA_USERS T;
+create user test identified by test_password default tablespace test_space;
 ```
 
 ### 添加权限
