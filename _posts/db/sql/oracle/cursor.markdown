@@ -5,56 +5,37 @@ date:   2016-10-11 13:21:30
 categories: oracle
 ---
 
-### 创建表空间
+### parent cursor和child cursor
+v$sqlarea中的每一行代表了一个parent cursor，根据address表示了其内存地址。
+v$sql中的每一行表示了一个child cursor，根据hash value和address与parent cursor 关联。child cursor有自己的address，即V$SQL.CHILD_ADDRESS。
+
 ```
-CREATE TABLESPACE TEST_SPACE
-DATAFILE '/ORADATA/ORCL/TEST_SPACE.DBF' SIZE 1000M;
+SELECT T.MODULE, T.ACTION, T.VERSION_COUNT, T.*
+FROM V$SQLAREA T,
+     USER_USERS U
+WHERE (T.PARSING_USER_ID = U.USER_ID)
+AND
+(T.MODULE = 'JDBC Thin Client');
 ```
 
-### 删除表空间
 ```
-DROP TABLESPACE TEST_SPACE INCLUDING CONTENTS AND DATAFILES;
-DROP TABLESPACE TEST_SPACE INCLUDING CONTENTS AND DATAFILES CASCADE CONSTRAINTS;
-```
-
-### 修改表空间
-```
-create user test identified by test_password default tablespace test_space;
+SELECT T.CHILD_NUMBER, T.LAST_ACTIVE_TIME, T.*
+FROM V$SQL T
+WHERE T.SQL_ID='1nqd0y53h01v2';
 ```
 
-### 查看表空间
+### 查看绑定数据
 ```
-select username,default_tablespace from user_users t;
-select username,default_tablespace from dba_users t where t.username='TEST';
-```
-
-### 查看表空间使用率
-```
-SELECT A.TABLESPACE_NAME                      "表空间名称",
-       TOTAL / (1024 * 1024)                  "表空间大小(M)",
-       FREE / (1024 * 1024)                   "表空间剩余大小(M)",
-       (TOTAL - FREE) / (1024 * 1024)         "表空间使用大小(M)",
-       '-',
-       TOTAL / (1024 * 1024 * 1024)           "表空间大小(G)",
-       FREE / (1024 * 1024 * 1024)            "表空间剩余大小(G)",
-       (TOTAL - FREE) / (1024 * 1024 * 1024)  "表空间使用大小(G)",
-       '-',
-       ROUND((TOTAL - FREE) / TOTAL, 4) * 100 "使用率 %"
-FROM (SELECT TABLESPACE_NAME, SUM(BYTES) FREE
-      FROM DBA_FREE_SPACE
-      GROUP BY TABLESPACE_NAME) A,
-     (SELECT TABLESPACE_NAME, SUM(BYTES) TOTAL
-      FROM DBA_DATA_FILES
-      GROUP BY TABLESPACE_NAME) B
-WHERE A.TABLESPACE_NAME = B.TABLESPACE_NAME;
+SELECT T.INST_ID, T.SQL_ID, T.CHILD_NUMBER, T.POSITION, T.NAME, T.VALUE_STRING
+FROM GV$SQL_BIND_CAPTURE T
+WHERE T.SQL_ID = 'bqfx5q2jas08u'
+  AND T.CHILD_NUMBER = 57
+  AND T.INST_ID = 1
+ORDER BY T.POSITION;
 ```
 
-### 修改默认表空间
-```
-create user test identified by test_password default tablespace test_space;
-```
-
+### 查看Child cursor执行计划
 
 
 ### 参考
-+ Oracle Database Reference
++ [Performance Tuning Basics 3 : Parent and Child Cursors](http://expertoracle.com/2017/11/17/db-tuning-basics-3-parent-and-child-cursors/)

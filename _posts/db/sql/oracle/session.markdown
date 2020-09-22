@@ -5,55 +5,70 @@ date:   2016-10-11 13:21:30
 categories: oracle
 ---
 
+### 会话相关表
+```
+SELECT * FROM V$SESSION;
+SELECT * FROM V$PROCESS;
+SELECT * FROM V$SESS_IO;
+```
+
 ### 查看当前会话
 ```
-CREATE TABLESPACE TEST_SPACE
-DATAFILE '/ORADATA/ORCL/TEST_SPACE.DBF' SIZE 1000M;
+SELECT S.USERNAME,
+       S.PROGRAM,
+       DECODE(S.COMMAND,
+              0, 'NO COMMAND',
+              1, 'CREATE TABLE',
+              2, 'INSERT',
+              3, 'SELECT',
+              6, 'UPDATE',
+              7, 'DELETE',
+              9, 'CREATE INDEX',
+              15, 'ALTER TABLE',
+              21, 'CREATE VIEW',
+              23, 'VALIDATE INDEX',
+              35, 'ALTER DATABASE',
+              39, 'CREATE TABLESPACE',
+              41, 'DROP TABLESPACE',
+              40, 'ALTER TABLESPACE',
+              53, 'DROP USER',
+              62, 'ANALYZE TABLE',
+              63, 'ANALYZE INDEX',
+              S.COMMAND || ': OTHER') COMMAND
+FROM V$SESSION S,
+     V$PROCESS P,
+     V$TRANSACTION T,
+     V$ROLLSTAT R,
+     V$ROLLNAME N
+WHERE S.PADDR = P.ADDR
+  AND S.TADDR = T.ADDR (+)
+  AND T.XIDUSN = R.USN (+)
+  AND R.USN = N.USN (+)
+ORDER BY 1
+;
 ```
 
-### 删除表空间
+### 查看DML会话
 ```
-DROP TABLESPACE TEST_SPACE INCLUDING CONTENTS AND DATAFILES;
-DROP TABLESPACE TEST_SPACE INCLUDING CONTENTS AND DATAFILES CASCADE CONSTRAINTS;
+SELECT S.USERNAME,
+       S.PROGRAM,
+       DECODE(S.COMMAND,
+              2, 'INSERT',
+              3, 'SELECT',
+              6, 'UPDATE',
+              7, 'DELETE') COMMAND
+FROM V$SESSION S,
+     V$PROCESS P,
+     V$TRANSACTION T,
+     V$ROLLSTAT R,
+     V$ROLLNAME N
+WHERE S.PADDR = P.ADDR
+  AND S.TADDR = T.ADDR (+)
+  AND T.XIDUSN = R.USN (+)
+  AND R.USN = N.USN (+)
+  AND S.COMMAND IN (2,3,6,7)
+;
 ```
-
-### 修改表空间
-```
-create user test identified by test_password default tablespace test_space;
-```
-
-### 查看表空间
-```
-select username,default_tablespace from user_users t;
-select username,default_tablespace from dba_users t where t.username='TEST';
-```
-
-### 查看表空间使用率
-```
-SELECT A.TABLESPACE_NAME                      "表空间名称",
-       TOTAL / (1024 * 1024)                  "表空间大小(M)",
-       FREE / (1024 * 1024)                   "表空间剩余大小(M)",
-       (TOTAL - FREE) / (1024 * 1024)         "表空间使用大小(M)",
-       '-',
-       TOTAL / (1024 * 1024 * 1024)           "表空间大小(G)",
-       FREE / (1024 * 1024 * 1024)            "表空间剩余大小(G)",
-       (TOTAL - FREE) / (1024 * 1024 * 1024)  "表空间使用大小(G)",
-       '-',
-       ROUND((TOTAL - FREE) / TOTAL, 4) * 100 "使用率 %"
-FROM (SELECT TABLESPACE_NAME, SUM(BYTES) FREE
-      FROM DBA_FREE_SPACE
-      GROUP BY TABLESPACE_NAME) A,
-     (SELECT TABLESPACE_NAME, SUM(BYTES) TOTAL
-      FROM DBA_DATA_FILES
-      GROUP BY TABLESPACE_NAME) B
-WHERE A.TABLESPACE_NAME = B.TABLESPACE_NAME;
-```
-
-### 修改默认表空间
-```
-create user test identified by test_password default tablespace test_space;
-```
-
 
 
 ### 参考
