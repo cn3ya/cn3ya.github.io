@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Oracle数据字典(元数据)表，Static Data Dictionary Views"
-date:   2016-10-11 13:21:30
+date:   2020-01-01 00:00:00
 categories: oracle
 ---
 
