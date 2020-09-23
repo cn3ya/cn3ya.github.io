@@ -8,22 +8,23 @@ tags: sql
 
 ### 创建分区表
 ```
-CREATE TABLE `test_table`
+create table `test_table`
 (
-  `id`                   char(36)       NOT NULL,
-	`create_tm`      datetime       DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`,`create_tm`)
+    `id`        char(36) not null,
+    `create_tm` datetime default current_timestamp,
+    `modify_tm` datetime default current_timestamp on update current_timestamp,
+    primary key (`id`, `create_tm`)
 )
-  PARTITION BY RANGE ( TO_DAYS(create_tm) ) (
-  PARTITION p202005 VALUES LESS THAN ( TO_DAYS('2020-06-01 00:00:00') ),
-  PARTITION p202006 VALUES LESS THAN ( TO_DAYS('2020-07-01 00:00:00') ),
-  PARTITION p202007 VALUES LESS THAN ( TO_DAYS('2020-08-01 00:00:00') ),
-  PARTITION p202008 VALUES LESS THAN ( TO_DAYS('2020-09-01 00:00:00') ),
-  PARTITION pmax VALUES LESS THAN (MAXVALUE)
-);
+    partition by range ( to_days(create_tm) ) (
+        partition p202005 values less than ( to_days('2020-06-01 00:00:00') ),
+        partition p202006 values less than ( to_days('2020-07-01 00:00:00') ),
+        partition p202007 values less than ( to_days('2020-08-01 00:00:00') ),
+        partition p202008 values less than ( to_days('2020-09-01 00:00:00') ),
+        partition pmax values less than (maxvalue)
+    );
 ```
 
-### 添加分区
+### 添删除分区
 ```
 ALTER TABLE test_table DROP PARTITION pmax;
 alter table test_table add partition(

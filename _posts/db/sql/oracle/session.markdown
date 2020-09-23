@@ -56,18 +56,20 @@ SELECT S.USERNAME,
               2, 'INSERT',
               3, 'SELECT',
               6, 'UPDATE',
-              7, 'DELETE') COMMAND
+              7, 'DELETE') COMMAND,
+       L.SQL_TEXT
 FROM V$SESSION S,
      V$PROCESS P,
      V$TRANSACTION T,
      V$ROLLSTAT R,
-     V$ROLLNAME N
+     V$ROLLNAME N,
+     V$SQLAREA L
 WHERE S.PADDR = P.ADDR
   AND S.TADDR = T.ADDR (+)
   AND T.XIDUSN = R.USN (+)
   AND R.USN = N.USN (+)
-  AND S.COMMAND IN (2,3,6,7)
-;
+  AND S.SQL_ID = L.SQL_ID (+)
+  AND S.COMMAND IN (2, 3, 6, 7)
 ```
 
 
