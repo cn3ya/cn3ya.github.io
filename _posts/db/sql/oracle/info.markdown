@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Oracle配置信息"
+title:  "Oracle基本信息"
 date:   2016-10-11 13:21:30
 categories: oracle
 ---

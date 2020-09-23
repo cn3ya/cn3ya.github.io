@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Oracle性能调优工具Toad"
+title:  "Oracle中的Shared Pool"
 date:   2016-10-11 13:21:30
 categories: oracle
 ---

@@ -6,54 +6,27 @@ categories: oracle
 ---
 
 ### 查看执行计划
+每种类型的dml语句都需要如下阶段：
+
+Create a Cursor         创建游标
+Parse the Statement     解析语句
+Bind Any Variables      绑定变量
+Run the Statement       运行语句
+Close the Cursor        关闭游标
+
 ```
-CREATE TABLESPACE TEST_SPACE
-DATAFILE '/ORADATA/ORCL/TEST_SPACE.DBF' SIZE 1000M;
+EXPLAIN PLAN FOR
+      SELECT * FROM SCOTT.EMP;
+
+SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);
 ```
 
-### 删除表空间
-```
-DROP TABLESPACE TEST_SPACE INCLUDING CONTENTS AND DATAFILES;
-DROP TABLESPACE TEST_SPACE INCLUDING CONTENTS AND DATAFILES CASCADE CONSTRAINTS;
+### 查看历史执行计划
 ```
 
-### 修改表空间
-```
-create user test identified by test_password default tablespace test_space;
 ```
 
-### 查看表空间
-```
-select username,default_tablespace from user_users t;
-select username,default_tablespace from dba_users t where t.username='TEST';
-```
-
-### 查看表空间使用率
-```
-SELECT A.TABLESPACE_NAME                      "表空间名称",
-       TOTAL / (1024 * 1024)                  "表空间大小(M)",
-       FREE / (1024 * 1024)                   "表空间剩余大小(M)",
-       (TOTAL - FREE) / (1024 * 1024)         "表空间使用大小(M)",
-       '-',
-       TOTAL / (1024 * 1024 * 1024)           "表空间大小(G)",
-       FREE / (1024 * 1024 * 1024)            "表空间剩余大小(G)",
-       (TOTAL - FREE) / (1024 * 1024 * 1024)  "表空间使用大小(G)",
-       '-',
-       ROUND((TOTAL - FREE) / TOTAL, 4) * 100 "使用率 %"
-FROM (SELECT TABLESPACE_NAME, SUM(BYTES) FREE
-      FROM DBA_FREE_SPACE
-      GROUP BY TABLESPACE_NAME) A,
-     (SELECT TABLESPACE_NAME, SUM(BYTES) TOTAL
-      FROM DBA_DATA_FILES
-      GROUP BY TABLESPACE_NAME) B
-WHERE A.TABLESPACE_NAME = B.TABLESPACE_NAME;
-```
-
-### 修改默认表空间
-```
-create user test identified by test_password default tablespace test_space;
-```
-
+### 绑定执行计划
 
 
 ### 参考
