@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[C/C++] C++智能指针"
+title:  "[C/C++] 函数指针"
 date: 2019-11-01 00:00:00
 categories: C++
 ---

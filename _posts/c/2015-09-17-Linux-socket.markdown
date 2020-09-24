@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "linux网络编程"
-date:   2016-10-11 13:21:30
+title:  "[C/C++] linux网络编程"
+date: 2019-11-01 00:00:00
 categories: C++
 ---
 

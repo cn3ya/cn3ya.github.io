@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "IO复用"
-date:   2016-10-11 13:21:30
+title:  "[C/C++] IO复用"
+date:  2019-11-01 00:00:00
 categories: C++
 ---
 
