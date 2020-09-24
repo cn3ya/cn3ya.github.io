@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Oracle中的Shared Pool"
+title:  "[Oracle] Shared Pool"
 date:   2020-01-01 00:00:00
 categories: oracle
 ---

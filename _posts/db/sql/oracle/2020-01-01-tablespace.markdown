@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Oracle表空间"
+title:  "[Oracle] 表空间"
 date:   2020-01-01 00:00:00
 categories: oracle
 ---

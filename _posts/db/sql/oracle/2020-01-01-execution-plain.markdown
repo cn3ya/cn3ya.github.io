@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Oracle执行计划"
+title:  "[Oracle] 执行计划"
 date:   2020-01-01 00:00:00
 categories: oracle
 ---

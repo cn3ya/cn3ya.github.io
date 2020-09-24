@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Oracle性能调优工具Toad"
+title:  "[Oracle] 性能调优工具Toad"
 date:   2020-01-01 00:00:00
 categories: oracle
 ---

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Oracle中的Library Cache"
+title:  "[Oracle] Library Cache"
 date:   2020-01-01 00:00:00
 categories: oracle
 ---

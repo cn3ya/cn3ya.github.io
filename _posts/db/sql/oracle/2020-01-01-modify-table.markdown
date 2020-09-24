@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Oracle生产环境修改表特性"
+title:  "[Oracle] 大数据表修改特性"
 date:   2020-01-01 00:00:00
 categories: oracle
 ---

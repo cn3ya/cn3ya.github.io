@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Oracle创建用户"
+title:  "[Oracle] 创建用户"
 date:   2020-01-01 00:00:00
 categories: oracle user
 ---

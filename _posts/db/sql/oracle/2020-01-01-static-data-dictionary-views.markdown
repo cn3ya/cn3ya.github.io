@@ -1,11 +1,12 @@
 ---
 layout: post
-title:  "Oracle数据字典(元数据)表，Static Data Dictionary Views"
+title:  "[Oracle] 数据字典(元数据)表"
 date:   2020-01-01 00:00:00
 categories: oracle
 ---
 
 ### 描述
+Static Data Dictionary Views
 oracle的数据字典表，或数据库元数据表，存储了描述数据库的运行信息，如数据表信息，用户信息，和权限信息等。创建和修改表，修改用户和权限变更将会改变这些信息，
 
 ### 命名规则和分类

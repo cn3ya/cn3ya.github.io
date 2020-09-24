@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Oracle分区表"
+title:  "[Oracle] 分区表"
 date:   2020-01-01 00:00:00
 categories: oracle
 ---
