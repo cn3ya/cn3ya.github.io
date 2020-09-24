@@ -5,6 +5,11 @@ date:   2020-01-01 00:00:00
 categories: oracle
 ---
 
+### 查看服务器信息
+```
+SELECT * FROM V$OSSTAT;
+```
+
 ### 查看数据库版本
 ```
 SELECT * FROM V$VERSION;

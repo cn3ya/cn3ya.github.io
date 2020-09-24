@@ -5,20 +5,14 @@ date:   2020-01-01 00:00:00
 categories: oracle
 ---
 
-### 查看数据库版本
+### 清除缓存
+```sql
+select ADDRESS, HASH_VALUE from V$SQLAREA where SQL_ID like '7yc%';
+-- ADDRESS          HASH_VALUE
+-- 000000085FD77CF0  808321886
+exec DBMS_SHARED_POOL.PURGE ('000000085FD77CF0, 808321886', 'C');
+-- ‘C’ (for cursor) or ‘S’ (for SQL)
 ```
-SELECT * FROM V$VERSION;
-```
-
-### 查看字符集
-```
--- 服务器
-SELECT USERENV('LANGUAGE') FROM DUAL;
--- 客户端
-SELECT * FROM V$NLS_PARAMETERS;
-```
-
-### 
 
 ### 参考
-+ [Database Reference](https://docs.oracle.com/database/121/REFRN/toc.htm)
++ [PL/SQL Packages and Types Reference](https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_SHARED_POOL.html)
