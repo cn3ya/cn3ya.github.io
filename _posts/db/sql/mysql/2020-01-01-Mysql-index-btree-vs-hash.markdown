@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Mysql索引类型Btree和Hash"
-date:   2017-08-23 13:21:30
+title:  "[MySQL] 索引类型Btree和Hash"
+date: 2020-02-01 00:00:00
 categories: db
 tags: sql
 ---

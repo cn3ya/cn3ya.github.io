@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Mysql处理json数据"
-date:   2017-08-23 13:21:30
+title:  "[MySQL] 处理json数据"
+date: 2020-02-01 00:00:00
 categories: db
 tags: sql
 ---

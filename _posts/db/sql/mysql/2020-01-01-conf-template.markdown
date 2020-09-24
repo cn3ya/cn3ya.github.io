@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "配置模板"
-date:   2017-08-23 13:21:30
+title:  "[MySQL] 配置模板"
+date: 2020-02-01 00:00:00
 categories: db
 tags: sql
 ---

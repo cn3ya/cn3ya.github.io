@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Mysql创建用户"
-date:   2016-10-11 13:21:30
+title:  "[MySQL] 创建用户"
+date: 2020-02-01 00:00:00
 categories: mysql
 ---
 

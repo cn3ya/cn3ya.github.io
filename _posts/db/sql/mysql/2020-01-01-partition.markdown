@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "MySql分区表"
-date:   2017-08-23 13:21:30
+title:  "[MySQL] 分区表"
+date: 2020-02-01 00:00:00
 categories: db
 tags: sql
 ---
@@ -31,4 +31,17 @@ alter table test_table add partition(
     partition p202009 VALUES LESS THAN ( TO_DAYS('2020-10-01 00:00:00') ),
     PARTITION pmax VALUES LESS THAN (MAXVALUE)
 );
+```
+
+### 查看分区
+```
+SELECT *
+FROM information_schema.PARTITIONS T
+WHERE T.TABLE_NAME='test_table';
+```
+
+
+### 查看分区数据
+```
+SELECT * FROM test_table PARTITION (p202005);
 ```
