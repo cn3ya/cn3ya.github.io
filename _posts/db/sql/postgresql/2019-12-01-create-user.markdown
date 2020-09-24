@@ -1,13 +1,15 @@
 ---
 layout: post
-title:  "PostgreSQL分区表"
-date:   2016-10-11 13:21:30
+title:  "[PgSQL] 创建用户"
+date: 2019-12-01 00:00:00
 categories: PostgreSQL PGSQL
 ---
 
 ### 创建用户
 ```
-create user test identified by test_password default tablespace test_space;
+create user test with password 'test333';
+CREATE DATABASE testdb OWNER test;
+GRANT ALL PRIVILEGES ON DATABASE testdb TO test;
 ```
 
 ### 删除用户
@@ -22,7 +24,7 @@ create user test identified by test_password default tablespace test_space;
 
 ### 查看用户
 ```
-create user test identified by test_password default tablespace test_space;
+select * from pg_user;
 ```
 
 ### 添加权限
