@@ -5,11 +5,12 @@ date:   2020-01-01 00:00:00
 categories: oracle
 ---
 
-### parent cursor和child cursor
-v$sqlarea中的每一行代表了一个parent cursor，根据address表示了其内存地址。
-v$sql中的每一行表示了一个child cursor，根据hash value和address与parent cursor 关联。child cursor有自己的address，即V$SQL.CHILD_ADDRESS。
+### Parent Cursor和Child Cursor
+v$sqlarea中的每一行代表了一个parent cursor，根据address表示了其内存地址。<br/>
+v$sql中的每一行表示了一个child cursor，根据hash value和address与parent cursor 关联。child cursor有自己的address，即V$SQL.CHILD_ADDRESS。<br/>
 
-```
+```sql
+-- 查看Parent Cursor
 SELECT T.MODULE, T.ACTION, T.VERSION_COUNT, T.*
 FROM V$SQLAREA T,
      USER_USERS U
@@ -18,7 +19,8 @@ AND
 (T.MODULE = 'JDBC Thin Client');
 ```
 
-```
+```sql
+-- 查看Child Cursor
 SELECT T.CHILD_NUMBER, T.LAST_ACTIVE_TIME, T.*
 FROM V$SQL T
 WHERE T.SQL_ID='1nqd0y53h01v2';
@@ -34,7 +36,7 @@ WHERE T.SQL_ID = 'bqfx5q2jas08u'
 ORDER BY T.POSITION;
 ```
 
-### 查看Child cursor执行计划
+### 查看Child Cursor执行计划
 
 
 ### 参考
