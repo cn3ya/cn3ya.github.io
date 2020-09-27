@@ -7,7 +7,7 @@ tags: sql
 ---
 
 ### 创建分区表
-```
+```sql
 create table `test_table`
 (
     `id`        char(36) not null,
@@ -25,7 +25,7 @@ create table `test_table`
 ```
 
 ### 添删除分区
-```
+```sql
 ALTER TABLE test_table DROP PARTITION pmax;
 alter table test_table add partition(
     partition p202009 VALUES LESS THAN ( TO_DAYS('2020-10-01 00:00:00') ),
@@ -34,7 +34,7 @@ alter table test_table add partition(
 ```
 
 ### 查看分区
-```
+```sql
 SELECT *
 FROM information_schema.PARTITIONS T
 WHERE T.TABLE_NAME='test_table';
@@ -42,6 +42,6 @@ WHERE T.TABLE_NAME='test_table';
 
 
 ### 查看分区数据
-```
+```sql
 SELECT * FROM test_table PARTITION (p202005);
 ```
