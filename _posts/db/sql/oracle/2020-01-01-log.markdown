@@ -1,0 +1,15 @@
+---
+layout: post
+title:  "[Oracle] 日志"
+date:   2020-01-01 00:00:00
+categories: oracle
+---
+
+### 查看日志
+```sql
+SELECT * FROM V$LOG;
+SELECT * FROM V$LOGFILE;
+```
+
+### 参考
++ [PL/SQL Packages and Types Reference](https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_JOB.html)

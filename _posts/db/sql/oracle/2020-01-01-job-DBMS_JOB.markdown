@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[Oracle] 定时任务"
+title:  "[Oracle] 定时任务DBMS_JOB"
 date:   2020-01-01 00:00:00
 categories: oracle
 ---

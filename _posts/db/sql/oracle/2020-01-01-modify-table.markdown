@@ -6,17 +6,29 @@ categories: oracle
 ---
 
 ### 参考数据量
+1. 字段数量: 16
+2. 记录数据量: 6000w
 
 ### 增删字段
-```
-CREATE TABLESPACE TEST_SPACE
-DATAFILE '/ORADATA/ORCL/TEST_SPACE.DBF' SIZE 1000M;
+```sql
+alter table LINEITEM add test varchar2(36) default '';
+comment on column LINEITEM.test
+  is '测试';
+-- 1s
+alter table LINEITEM drop column test;
+-- 2:59m
 ```
 
 ### 增删索引
+```sql
+create index test_idx on LINEITEM (l_orderkey);
+-- 8:10m
+drop index TEST_IDX;
+-- 2s
 ```
-DROP TABLESPACE TEST_SPACE INCLUDING CONTENTS AND DATAFILES;
-DROP TABLESPACE TEST_SPACE INCLUDING CONTENTS AND DATAFILES CASCADE CONSTRAINTS;
+
+### 是否锁表
+```
 ```
 
 ### 参考
