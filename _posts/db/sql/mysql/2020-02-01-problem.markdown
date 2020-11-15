@@ -1,0 +1,10 @@
+---
+layout: post
+title:  "[MySQL] 问题汇总"
+date: 2020-02-01 00:00:00
+categories: db
+tags: sql
+---
+
+### datetime四舍五入
+

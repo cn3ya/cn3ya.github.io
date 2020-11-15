@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "[ClickHouse] sql解析"
+date:   2017-08-23 13:21:30
+categories: db
+tags: sql
+---
+
+### 背景
+列数据库，应用于OLAP场景下的大数据分析。
+
+### RPM安装方式
+

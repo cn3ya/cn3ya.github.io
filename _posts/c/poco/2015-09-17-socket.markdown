@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[C/C++] linux的zero_copy"
+title:  "[C/C++] POCO框架SOCKET使用"
 date: 2019-11-01 00:00:00
 categories: C++
 ---
