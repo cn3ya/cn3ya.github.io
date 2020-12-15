@@ -11,6 +11,6 @@ Linux后台服务管理，提供进程监控，异常自动重启等功能
 ### 服务管理
 
 ### 参考
-+ (Init System)[https://en.wikipedia.org/wiki/Init]
-+ (Run multiple services in a container)[https://docs.docker.com/config/containers/multi-service_container/]
-+ (Choosing an init process for multi-process containers)[https://ahmet.im/blog/minimal-init-process-for-containers/]
++ [Init System](https://en.wikipedia.org/wiki/Init)
++ [Run multiple services in a container](https://docs.docker.com/config/containers/multi-service_container/)
++ [Choosing an init process for multi-process containers](https://ahmet.im/blog/minimal-init-process-for-containers/)

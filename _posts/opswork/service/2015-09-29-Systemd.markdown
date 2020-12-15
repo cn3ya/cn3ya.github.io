@@ -55,5 +55,5 @@ journalctl -fu <service-name>
 ```
 
 ### 参考
-+ (Systemd)[https://www.freedesktop.org/wiki/Software/systemd/]
-+ (systemd.service)[https://www.freedesktop.org/software/systemd/man/systemd.service.html]
++ [Systemd](https://www.freedesktop.org/wiki/Software/systemd/)
++ [systemd.service](https://www.freedesktop.org/software/systemd/man/systemd.service.html)
