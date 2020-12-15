@@ -1,0 +1,59 @@
+---
+layout: post
+title:  "Systemd服务管理"
+date:   2015-09-22 09:41:22
+categories: linux service systemd
+---
+
+### 配置systemd
+查看配置
+```
+systemctl show -p LogLevel
+```
+修改配置
+```
+
+```
+
+### 服务script
+script路径
+```
+systemctl show -p UnitPath
+```
+编写服务script
+```
+[Unit]
+Description=Systemd Service Sample By liumiaocn
+Documentation=https://www.example.com/
+
+[Service]
+ExecStart=/usr/bin/echo "hello liumiaocn"
+
+[Install]
+WantedBy=multi-user.target
+```
+
+### 服务管理
+```bash
+# 加载新配置
+systemctl daemon-reload
+
+# 服务列表
+systemctl list-units --type=service
+
+# 查看服务配置
+systemctl show docker
+
+# 服务生命周期管理
+systemctl start <service-name>
+systemctl stop <service-name>
+systemctl restart <service-name>
+
+# 查看服务日志
+journalctl -u <service-name>
+journalctl -fu <service-name>
+```
+
+### 参考
++ (Systemd)[https://www.freedesktop.org/wiki/Software/systemd/]
++ (systemd.service)[https://www.freedesktop.org/software/systemd/man/systemd.service.html]
